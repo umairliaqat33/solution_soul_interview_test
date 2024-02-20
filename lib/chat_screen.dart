@@ -1,7 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:solution_soul_interview_test/chat_model.dart';
-import 'package:solution_soul_interview_test/firebase%20_and_firestore.dart';
+import 'package:solution_soul_interview_test/FirebaseAndFirestore.dart';
+import 'package:solution_soul_interview_test/login_screen.dart';
 
 class ChatScreen extends StatelessWidget {
   ChatScreen({super.key});
@@ -22,6 +23,12 @@ class ChatScreen extends StatelessWidget {
           IconButton(
             onPressed: () {
               FirebaseAuth.instance.signOut();
+              Navigator.of(context).pushAndRemoveUntil(
+                MaterialPageRoute(
+                  builder: (context) => const LoginScreen(),
+                ),
+                (route) => false,
+              );
             },
             icon: const Icon(Icons.logout),
           )
@@ -39,7 +46,9 @@ class ChatScreen extends StatelessWidget {
                   stream: _firebaseAndFirestore.getMessages(),
                   builder: (BuildContext context, snapshot) {
                     if (snapshot.connectionState == ConnectionState.waiting) {
-                      return const CircularProgressIndicator();
+                      return const Center(
+                        child: CircularProgressIndicator(),
+                      );
                     }
                     if (snapshot.data == null) {
                       return const Center(
@@ -54,11 +63,15 @@ class ChatScreen extends StatelessWidget {
                         return Container(
                           alignment: uid == chatList[index].uid
                               ? Alignment.centerRight
-                              : Alignment.centerRight,
+                              : Alignment.centerLeft,
+                          margin: const EdgeInsets.all(2),
                           color: uid == chatList[index].uid
                               ? const Color.fromARGB(255, 164, 196, 223)
                               : const Color.fromARGB(255, 17, 110, 185),
-                          child: Text(chatList[index].message),
+                          child: Text(
+                            chatList[index].message,
+                            style: const TextStyle(color: Colors.white),
+                          ),
                         );
                       },
                     );
@@ -109,5 +122,6 @@ class ChatScreen extends StatelessWidget {
           message: _messageController.text,
           messageId: user.uid + _messageController.text),
     );
+    _messageController.clear();
   }
 }

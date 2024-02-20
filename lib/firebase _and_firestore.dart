@@ -52,7 +52,7 @@ class FirebaseAndFirestore {
   Future<void> sendMessage(ChatModel chat) async {
     try {
       await _firebaseFirestore
-          .collection(getUserId.toString())
+          .collection('chat')
           .doc(chat.messageId)
           .set(chat.toJson());
     } catch (e) {
@@ -78,7 +78,7 @@ class FirebaseAndFirestore {
   }
 
   Stream<List<ChatModel>?> getMessages() {
-    return _firebaseFirestore.collection(getUserId.toString()).snapshots().map(
+    return _firebaseFirestore.collection('chat').snapshots().map(
           (snapshot) => snapshot.docs
               .map(
                 (doc) => ChatModel.fromJson(

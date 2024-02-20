@@ -4,7 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:solution_soul_interview_test/chat_screen.dart';
-import 'package:solution_soul_interview_test/firebase%20_and_firestore.dart';
+import 'package:solution_soul_interview_test/FirebaseAndFirestore.dart';
 import 'package:solution_soul_interview_test/registration_screen.dart';
 
 class LoginScreen extends StatefulWidget {

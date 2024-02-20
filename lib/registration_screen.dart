@@ -1,10 +1,8 @@
-import 'dart:developer';
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:solution_soul_interview_test/chat_screen.dart';
-import 'package:solution_soul_interview_test/firebase%20_and_firestore.dart';
+import 'package:solution_soul_interview_test/FirebaseAndFirestore.dart';
 
 class RegistrationScreen extends StatefulWidget {
   const RegistrationScreen({super.key});

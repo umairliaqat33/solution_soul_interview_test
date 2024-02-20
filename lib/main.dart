@@ -1,7 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:solution_soul_interview_test/chat_screen.dart';
-import 'package:solution_soul_interview_test/firebase%20_and_firestore.dart';
+import 'package:solution_soul_interview_test/FirebaseAndFirestore.dart';
 import 'package:solution_soul_interview_test/firebase_options.dart';
 import 'package:solution_soul_interview_test/login_screen.dart';
 
